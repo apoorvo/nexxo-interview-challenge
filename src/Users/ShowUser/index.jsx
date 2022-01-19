@@ -32,14 +32,14 @@ const ShowUser = () => {
   return (
     <div className="user">
       <div className="info">
-        <img src={user.picture} />
+        <img src={user.picture} alt={`${user.firstName} ${user.lastName}`} />
 
         <div className="details">
           <h1>{`${user.title[0].toUpperCase() + user.title.slice(1)} ${
             user.firstName
           } ${user.lastName}`}</h1>
-          {user.gender == "male" && <i className="ri-men-fill"></i>}
-          {user.gender == "female" && <i className="ri-women-fill"></i>}
+          {user.gender === "male" && <i className="ri-men-fill"></i>}
+          {user.gender === "female" && <i className="ri-women-fill"></i>}
           <p>
             <span>DOB:</span> {new Date(user.dateOfBirth).toLocaleDateString()}
           </p>
