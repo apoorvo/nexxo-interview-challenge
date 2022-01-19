@@ -1,12 +1,21 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ShowUser from "./ShowUser";
 
 import UsersList from "./UsersList";
 
 const Users = () => {
   return (
-    <div>
-      <UsersList />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/users/:id">
+          <ShowUser />
+        </Route>
+        <Route path="/users">
+          <UsersList />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
