@@ -6,7 +6,7 @@ import TableView from "./TableView";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
-  const [loadingUsers, setLoadingUsers] = useState(false);
+  const [loadingUsers, setLoadingUsers] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const fetchUsers = async () => {
@@ -18,7 +18,6 @@ const UsersList = () => {
         page: currentPage,
         limit: 10,
       });
-      console.log(data);
       setUsers([...data]);
       setTotalPages(Math.floor(total / 10));
     } catch (err) {

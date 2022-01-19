@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { HEADERS } from "../table_constants";
+import { HEADERS } from "./table_constants";
 
 const TableView = ({ users }) => {
   const headers = useMemo(() => HEADERS, []);
@@ -25,9 +25,14 @@ const TableView = ({ users }) => {
                 history.push(`/users/${row.id}`);
               }}
             >
-              {headers.map((header, index) => (
-                <td key={index}>{row[header.key]}</td>
-              ))}
+              {headers.map((header, index) => {
+                if (header.key === "title") {
+                  let title = row[header.key];
+                  title = title[0].toUpperCase() + title.slice(1);
+                  return <td key={index}>{title}</td>;
+                }
+                return <td key={index}>{row[header.key]}</td>;
+              })}
             </tr>
           );
         })}
