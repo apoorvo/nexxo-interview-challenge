@@ -4,6 +4,8 @@ import PageLoader from "../../common/PageLoader";
 import Pagination from "./Pagination";
 import TableView from "./TableView";
 
+const limit = 10;
+
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
@@ -16,10 +18,10 @@ const UsersList = () => {
         data: { data, total },
       } = await usersApi.fetchAllUsers({
         page: currentPage,
-        limit: 10,
+        limit,
       });
       setUsers([...data]);
-      setTotalPages(Math.floor(total / 10));
+      setTotalPages(Math.floor(total / limit));
     } catch (err) {
       console.log(err);
     } finally {
