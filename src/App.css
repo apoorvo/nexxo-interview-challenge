@@ -13,6 +13,7 @@ table {
   border-collapse: collapse;
   border: 1px solid #4c5270;
   border-radius: 6px;
+  background: white;
 }
 
 td:first-child,
@@ -35,6 +36,30 @@ th {
   color: white;
 }
 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 16px solid #4c5270; /* Light grey */
+  border-top: 16px solid #f652a0; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .user {
   width: 60%;
   margin: auto;
@@ -42,7 +67,6 @@ th {
   padding-top: 100px;
 }
 
-.loader,
 .user h1 {
   color: #f652a0;
 }
@@ -105,11 +129,11 @@ th {
 
 .userRow {
   cursor: pointer;
-  transition: background-color 300ms ease;
+  transition: all 300ms ease;
 }
 
 .userRow:hover {
-  background-color: #4c5270;
+  background-color: #f652a0;
   color: white;
 }
 
@@ -123,4 +147,5 @@ th {
 
 .pagination i {
   margin: 10px;
+  cursor: pointer;
 }
