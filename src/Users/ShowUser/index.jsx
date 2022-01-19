@@ -13,7 +13,6 @@ const ShowUser = () => {
     setUserLoading(true);
     try {
       const { data } = await usersApi.fetchUser(id);
-      console.log(data);
       setUser({ ...data });
     } catch (err) {
       console.log(err);

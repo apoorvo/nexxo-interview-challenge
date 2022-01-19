@@ -76,7 +76,7 @@ th {
   align-items: flex-start;
   justify-content: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 50px;
+  padding: 20px 50px 50px 50px;
   position: relative;
 }
 
@@ -93,6 +93,11 @@ th {
 
 .user .details {
   padding: 10px;
+  width: 90%;
+}
+
+.user .details p {
+  margin-top: 10px;
 }
 
 .ri-arrow-go-back-line {
