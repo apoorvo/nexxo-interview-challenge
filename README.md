@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Nexxo Project by Apoorvo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is hosted at: [user-frontend-apoorvo.herokuapp.com](https://user-frontend-apoovo.herokuapp.com)
 
-## Available Scripts
+While looking for a mock API to implement the frontend the closest that I could find was: https://dummyapi.io/.
 
-In the project directory, you can run:
+## API overview
 
-### `yarn start`
+I have used the [Dummy Api](https://dummyapi.io/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The above api returns a paginated response when `/user` is fetched.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When `/user/:id` is fetched it returns an object with additional details about the user.
 
-### `yarn test`
+The `/user` route is used to list out a table of users with the following headers:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+      {
+        id,
+        imageUrl,
+        title, #Mr, miss etc.
+        firstName,
+        lastName,
+      }
+      
+The person show page details are fetched from `/user/:id` route.
 
-### `yarn build`
+## API Key
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Since the API is not an open API it requires an API Key to be sent along with the request under `app-id` header.
+       
+       axios.defaults.headers["app-id"] = process.env.REACT_APP_API_KEY;
+       
+The API Key is not pushed with repo, however it has been added to the hosted application and the application can be seen in action there.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Pagination
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Pagination is being implemented by keeping track of the page and total pages in the application's state.
+To calculate the total pages we use the following snippet:
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+       const {
+        data: { data, total },
+      } = await usersApi.fetchAllUsers({
+        page: currentPage,
+        limit,
+      });
+      setUsers([...data]);
+      setTotalPages(Math.floor(total / limit));
+      
+## Thanks!
+Apoorvo Chakraborty
