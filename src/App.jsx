@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/users" exact>
+          <Route path="/users">
             <Users />
           </Route>
           <Redirect to="/users" from="/" />

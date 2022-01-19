@@ -24,3 +24,48 @@ th {
   min-width: 100px;
   text-align: left;
 }
+
+.userRow {
+  cursor: pointer;
+}
+
+.user {
+  width: 70%;
+  margin: auto;
+  height: 80%;
+  padding-top: 100px;
+}
+
+.user .info {
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 10px 10px 5px 0px rgba(143, 143, 143, 0.75);
+  padding: 50px;
+}
+
+.user .info img {
+  margin-right: 10px;
+  width: auto;
+  clip-path: circle(50% at center);
+}
+
+.user span {
+  font-weight: bold;
+}
+
+.user .details {
+  padding: 10px;
+}
+
+.ri-arrow-go-back-line {
+  font-size: 40px;
+  padding: 20px;
+  color: white;
+  background-color: black;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 10px 10px 5px 0px rgba(143, 143, 143, 0.75);
+}
