@@ -26,19 +26,11 @@ const ShowUser = () => {
   }, []);
 
   if (userLoading) {
-    return <h1>Loading...</h1>;
+    return <h1 className="loader">Loading...</h1>;
   }
 
   return (
     <div className="user">
-      <div className="back">
-        <i
-          className="ri-arrow-go-back-line"
-          onClick={() => {
-            history.push("/users");
-          }}
-        ></i>
-      </div>
       <div className="info">
         <img src={user.picture} />
 
@@ -68,6 +60,12 @@ const ShowUser = () => {
             </p>
           </div>
         </div>
+        <i
+          className="ri-arrow-go-back-line"
+          onClick={() => {
+            history.push("/users");
+          }}
+        ></i>
       </div>
     </div>
   );

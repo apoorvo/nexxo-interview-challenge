@@ -46,14 +46,17 @@ const UsersList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Users list</h1>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
+    <div className="usersList">
+      <div className="header">
+        <h1>Users list</h1>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          nextPage={nextPage}
+          prevPage={prevPage}
+        />
+      </div>
+
       {loadingUsers ? <h1>Loading...</h1> : <TableView users={users} />}
     </div>
   );
