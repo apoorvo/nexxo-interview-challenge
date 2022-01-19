@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import usersApi from "../../api/user";
+import PageLoader from "../../common/PageLoader";
 
 const ShowUser = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const ShowUser = () => {
   }, []);
 
   if (userLoading) {
-    return <h1 className="loader">Loading...</h1>;
+    return <PageLoader />;
   }
 
   return (

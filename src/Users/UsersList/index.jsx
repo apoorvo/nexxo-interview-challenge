@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import usersApi from "../../api/user";
+import PageLoader from "../../common/PageLoader";
 import Pagination from "./Pagination";
 import TableView from "./TableView";
 
@@ -57,7 +58,7 @@ const UsersList = () => {
         />
       </div>
 
-      {loadingUsers ? <h1>Loading...</h1> : <TableView users={users} />}
+      {loadingUsers ? <PageLoader /> : <TableView users={users} />}
     </div>
   );
 };
